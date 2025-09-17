@@ -1,0 +1,2073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Premium Apartments | Kigali Housing</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="logoo.PNG" type="image/png">
+  <style>
+    :root {
+      --primary: #2D5D7C; /* Deep blue */
+      --primary-light: #3A7CA5;
+      --secondary: #F9A825; /* Golden yellow */
+      --accent: #E63946; /* Vibrant red */
+      --dark: #1A1A2E;
+      --light: #F8F9FA;
+      --gray: #6C757D;
+      --gray-light: #E9ECEF;
+      --transition: all 0.3s ease;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+      --green: #2E8B57; /* Rwanda green */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
+      line-height: 1.6;
+      background-color: var(--light);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background-color: var(--secondary);
+      color: white;
+      box-shadow: 0 4px 15px rgba(249, 168, 37, 0.3);
+    }
+
+    .btn-primary:hover {
+      background-color: #e69500;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(249, 168, 37, 0.4);
+    }
+
+    /* Header Styles */
+    header {
+      background-color: white;
+      box-shadow: var(--shadow);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    header.scrolled {
+      background-color: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 15px;
+    }
+
+    .logo h1 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Navigation */
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links li {
+      margin-left: 30px;
+      position: relative;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      color: var(--dark);
+      transition: var(--transition);
+      position: relative;
+      padding: 5px 0;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--secondary);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links .active {
+      color: var(--primary);
+    }
+
+    .nav-links .active::after {
+      width: 100%;
+    }
+
+    .dropdown-btn {
+      display: flex;
+      align-items: center;
+    }
+
+    .dropdown-btn i {
+      margin-left: 5px;
+      font-size: 0.8rem;
+      transition: var(--transition);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      width: 200px;
+      box-shadow: var(--shadow-lg);
+      border-radius: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 100;
+      padding: 10px 0;
+    }
+
+    .dropdown-menu li {
+      margin: 0;
+      padding: 0;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 20px;
+      color: var(--gray);
+    }
+
+    .dropdown-menu a:hover {
+      color: var(--primary);
+      background-color: var(--gray-light);
+    }
+
+    .nav-links li:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      top: 120%;
+    }
+
+    .nav-links li:hover .dropdown-btn i {
+      transform: rotate(180deg);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      font-size: 1.5rem;
+      color: var(--primary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .mobile-menu-btn:hover {
+      color: var(--secondary);
+    }
+
+    /* Apartments Hero Section */
+    .apartments-hero {
+      height: 60vh;
+      min-height: 500px;
+      background: linear-gradient(rgba(45, 93, 124, 0.7), rgba(45, 93, 124, 0.8)), 
+                  url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding-top: 80px;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .apartments-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23F8F9FA" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%23F8F9FA" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23F8F9FA"/></svg>') no-repeat;
+      background-size: cover;
+    }
+
+    .apartments-hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .apartments-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .apartments-hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Apartments Section */
+    .apartments-section {
+      padding: 100px 0;
+      background-color: white;
+    }
+
+    .apartments-section h2 {
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 2.5rem;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .apartments-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background-color: var(--secondary);
+      border-radius: 2px;
+    }
+
+    .apartments-section p.subtitle {
+      text-align: center;
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto 50px;
+      font-size: 1.1rem;
+    }
+
+    .apartments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .apartment-card {
+      background-color: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .apartment-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background-color: var(--secondary);
+    }
+
+    .apartment-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .apartment-img {
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .apartment-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .apartment-card:hover .apartment-img img {
+      transform: scale(1.05);
+    }
+
+    .apartment-content {
+      padding: 25px;
+    }
+
+    .apartment-content h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+
+    .apartment-location {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      color: var(--gray);
+    }
+
+    .apartment-location i {
+      margin-right: 8px;
+      color: var(--secondary);
+    }
+
+    .apartment-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .feature i {
+      margin-right: 5px;
+      color: var(--secondary);
+    }
+
+    .apartment-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 15px 0;
+    }
+
+    .apartment-price span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--gray);
+    }
+
+    /* Apartment Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      overflow-y: auto;
+      padding: 40px 20px;
+    }
+
+    .modal-content {
+      background-color: white;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-header {
+      padding: 20px;
+      background-color: var(--primary);
+      color: white;
+      position: relative;
+    }
+
+    .modal-header h3 {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      color: var(--secondary);
+      transform: rotate(90deg);
+    }
+
+    .modal-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      padding: 30px;
+    }
+
+    .modal-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .modal-gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .modal-gallery img:hover {
+      transform: scale(1.02);
+    }
+
+    .main-image {
+      grid-column: span 2;
+      height: 300px;
+    }
+
+    .modal-details h4 {
+      color: var(--primary);
+      margin: 20px 0 10px;
+      font-size: 1.3rem;
+      position: relative;
+    }
+
+    .modal-details h4::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--secondary);
+    }
+
+    .detail-list {
+      margin-bottom: 20px;
+    }
+
+    .detail-item {
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    .detail-item i {
+      color: var(--secondary);
+      margin-right: 10px;
+      margin-top: 3px;
+    }
+
+    .modal-form {
+      background-color: var(--gray-light);
+      padding: 30px;
+      border-radius: 8px;
+    }
+
+    .modal-form h4 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(45, 93, 124, 0.1);
+    }
+
+    textarea.form-control {
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      background-color: var(--secondary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .submit-btn:hover {
+      background-color: #e69500;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(249, 168, 37, 0.4);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 80px 0 20px;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-col h3 {
+      color: var(--secondary);
+      margin-bottom: 25px;
+      font-size: 1.3rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--secondary);
+    }
+
+    .footer-col p {
+      margin-bottom: 15px;
+      opacity: 0.8;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      opacity: 0.8;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      color: var(--secondary);
+      transform: translateX(5px);
+    }
+
+    .footer-contact p {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .footer-contact i {
+      margin-right: 10px;
+      color: var(--secondary);
+      margin-top: 3px;
+    }
+
+    .social-media {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-media a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: var(--transition);
+      color: white;
+      font-size: 1.1rem;
+    }
+
+    .social-media a:hover {
+      background-color: var(--secondary);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      width: 100%;
+    }
+
+    .footer-bottom p {
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--secondary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+      box-shadow: 0 2px 15px rgba(249, 168, 37, 0.3);
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1200px) {
+      .apartments-hero h1 {
+        font-size: 3rem;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .modal-body {
+        grid-template-columns: 1fr;
+      }
+      
+      .modal-gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .main-image {
+        grid-column: span 3;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 15px;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 0;
+        transition: var(--transition);
+        z-index: 999;
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+      }
+
+      .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+        box-shadow: none;
+        display: none;
+        background-color: var(--gray-light);
+      }
+
+      .nav-links li:hover .dropdown-menu {
+        top: 0;
+      }
+
+      .dropdown-menu.active {
+        display: block;
+      }
+
+      .apartments-hero {
+        height: 50vh;
+        min-height: 400px;
+      }
+
+      .apartments-hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .modal-gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .main-image {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .logo h1 {
+        font-size: 1.2rem;
+      }
+
+      .logo img {
+        height: 40px;
+        margin-right: 10px;
+      }
+
+      .apartments-hero h1 {
+        font-size: 2rem;
+      }
+
+      .apartments-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-gallery {
+        grid-template-columns: 1fr;
+      }
+      
+      .main-image {
+        grid-column: span 1;
+      }
+
+      .social-media {
+        gap: 10px;
+      }
+
+      .social-media a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="container header-container">
+      <div class="logo">
+        <img src="logoo.PNG" alt="Kigali Housing">
+        <h1>Kigali Housing</h1>
+      </div>
+      
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about us.html">About Us</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-btn">Properties <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="apartment.html" class="active">Apartments</a></li>
+              <li><a href="For rent.html">For rent</a></li>
+              <li><a href="For sale.html">Sale</a></li>
+              <li><a href="Short-stay.html">Short Stay</a></li>
+            </ul>
+          </li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      
+      <div class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Apartments Hero Section -->
+  <section class="apartments-hero">
+    <div class="apartments-hero-content">
+      <h1>Premium Apartments in Kigali</h1>
+      <p>Discover exceptional living spaces in Rwanda's vibrant capital city</p>
+    </div>
+  </section>
+
+  <!-- Apartments Section -->
+  <section class="apartments-section">
+    <div class="container">
+      <h2>Featured Apartments</h2>
+      <p class="subtitle">Explore our selection of high-quality apartments across Kigali's best neighborhoods</p>
+      
+      <div class="apartments-grid">
+        <!-- Apartment 1 -->
+        <div class="apartment-card">
+          <div class="apartment-img">
+            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Luxury Apartment in Nyarutarama">
+          </div>
+          <div class="apartment-content">
+            <h3>Nyarutarama Luxury Residence</h3>
+            <div class="apartment-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Nyarutarama, Kigali</span>
+            </div>
+            <div class="apartment-features">
+              <div class="feature">
+                <i class="fas fa-bed"></i>
+                <span>3 Bedrooms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-bath"></i>
+                <span>2 Bathrooms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-vector-square"></i>
+                <span>180 m²</span>
+              </div>
+            </div>
+            <div class="apartment-price">
+              $1,200 <span>/month</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="openModal('modal1')">View Details</button>
+          </div>
+        </div>
+        
+        <!-- Apartment 2 -->
+        <div class="apartment-card">
+          <div class="apartment-img">
+            <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Modern Apartment in Kiyovu">
+          </div>
+          <div class="apartment-content">
+            <h3>Kiyovu Modern Flat</h3>
+            <div class="apartment-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Kiyovu, Kigali</span>
+            </div>
+            <div class="apartment-features">
+              <div class="feature">
+                <i class="fas fa-bed"></i>
+                <span>2 Bedrooms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-bath"></i>
+                <span>1 Bathroom</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-vector-square"></i>
+                <span>120 m²</span>
+              </div>
+            </div>
+            <div class="apartment-price">
+              $850 <span>/month</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="openModal('modal2')">View Details</button>
+          </div>
+        </div>
+        
+        <!-- Apartment 3 -->
+        <div class="apartment-card">
+          <div class="apartment-img">
+            <img src="ser111.png" alt="Executive Apartment in Kacyiru">
+          </div>
+          <div class="apartment-content">
+            <h3>Kacyiru Executive Suite</h3>
+            <div class="apartment-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Kacyiru, Kigali</span>
+            </div>
+            <div class="apartment-features">
+              <div class="feature">
+                <i class="fas fa-bed"></i>
+                <span>4 Bedrooms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-bath"></i>
+                <span>3 Bathrooms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-vector-square"></i>
+                <span>250 m²</span>
+              </div>
+            </div>
+            <div class="apartment-price">
+              $1,800 <span>/month</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="openModal('modal3')">View Details</button>
+          </div>
+        </div>
+        
+        <!-- Apartment 4 -->
+        <div class="apartment-card">
+          <div class="apartment-img">
+            <img src="https://images.unsplash.com/photo-1560448205-97abe7378152?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Studio Apartment in Gikondo">
+          </div>
+          <div class="apartment-content">
+            <h3>Gikondo Cozy Studio</h3>
+            <div class="apartment-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Gikondo, Kigali</span>
+            </div>
+            <div class="apartment-features">
+              <div class="feature">
+                <i class="fas fa-bed"></i>
+                <span>1 Bedroom</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-bath"></i>
+                <span>1 Bathroom</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-vector-square"></i>
+                <span>60 m²</span>
+              </div>
+            </div>
+            <div class="apartment-price">
+              $500 <span>/month</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="openModal('modal4')">View Details</button>
+          </div>
+        </div>
+        
+        <!-- Apartment 5 (New) -->
+        <div class="apartment-card">
+          <div class="apartment-img">
+            <img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Apartment in Kimihurura">
+          </div>
+          <div class="apartment-content">
+            <h3>Kimihurura Garden View</h3>
+            <div class="apartment-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Kimihurura, Kigali</span>
+            </div>
+            <div class="apartment-features">
+              <div class="feature">
+                <i class="fas fa-bed"></i>
+                <span>3 Bedrooms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-bath"></i>
+                <span>2 Bathrooms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-vector-square"></i>
+                <span>200 m²</span>
+              </div>
+            </div>
+            <div class="apartment-price">
+              $1,400 <span>/month</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="openModal('modal5')">View Details</button>
+          </div>
+        </div>
+        
+        <!-- Apartment 6 (New) -->
+        <div class="apartment-card">
+          <div class="apartment-img">
+            <img src="https://images.unsplash.com/photo-1560448205-4d9b3e6bb6db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Penthouse in Kicukiro">
+          </div>
+          <div class="apartment-content">
+            <h3>Kicukiro Sky Penthouse</h3>
+            <div class="apartment-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Kicukiro, Kigali</span>
+            </div>
+            <div class="apartment-features">
+              <div class="feature">
+                <i class="fas fa-bed"></i>
+                <span>2 Bedrooms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-bath"></i>
+                <span>2 Bathrooms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-vector-square"></i>
+                <span>150 m²</span>
+              </div>
+            </div>
+            <div class="apartment-price">
+              $1,100 <span>/month</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="openModal('modal6')">View Details</button>
+          </div>
+        </div>
+        
+        <!-- Apartment 7 (New) -->
+        <div class="apartment-card">
+          <div class="apartment-img">
+            <img src="serrr2.png" alt="Apartment in Remera">
+          </div>
+          <div class="apartment-content">
+            <h3>Remera Family Apartment</h3>
+            <div class="apartment-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Remera, Kigali</span>
+            </div>
+            <div class="apartment-features">
+              <div class="feature">
+                <i class="fas fa-bed"></i>
+                <span>4 Bedrooms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-bath"></i>
+                <span>3 Bathrooms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-vector-square"></i>
+                <span>220 m²</span>
+              </div>
+            </div>
+            <div class="apartment-price">
+              $1,500 <span>/month</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="openModal('modal7')">View Details</button>
+          </div>
+        </div>
+        
+        <!-- Apartment 8 (New) -->
+        <div class="apartment-card">
+          <div class="apartment-img">
+            <img src="apartment8.png" alt="Studio in Gisozi">
+          </div>
+          <div class="apartment-content">
+            <h3>Gisozi Modern Studio</h3>
+            <div class="apartment-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Gisozi, Kigali</span>
+            </div>
+            <div class="apartment-features">
+              <div class="feature">
+                <i class="fas fa-bed"></i>
+                <span>1 Bedroom</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-bath"></i>
+                <span>1 Bathroom</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-vector-square"></i>
+                <span>70 m²</span>
+              </div>
+            </div>
+            <div class="apartment-price">
+              $550 <span>/month</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="openModal('modal8')">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apartment Modal 1 -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Nyarutarama Luxury Residence</h3>
+        <p>Nyarutarama, Kigali</p>
+        <span class="modal-close" onclick="closeModal('modal1')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="modal-gallery">
+          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Living Area" class="main-image">
+          <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Bedroom">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Kitchen">
+          <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bathroom">
+        </div>
+        <div class="modal-details">
+          <h4>Description</h4>
+          <p>This luxurious 3-bedroom apartment in Nyarutarama offers premium living with high-end finishes, spacious rooms, and stunning city views. The residence features an open-plan living area, modern kitchen, and a large balcony perfect for entertaining.</p>
+          
+          <h4>Details</h4>
+          <div class="detail-list">
+            <div class="detail-item">
+              <i class="fas fa-home"></i>
+              <div>
+                <strong>Property Type:</strong> Apartment
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bed"></i>
+              <div>
+                <strong>Bedrooms:</strong> 3 (Master with ensuite)
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bath"></i>
+              <div>
+                <strong>Bathrooms:</strong> 2.5
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-vector-square"></i>
+              <div>
+                <strong>Size:</strong> 180 m²
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-car"></i>
+              <div>
+                <strong>Parking:</strong> 2 Covered spaces
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-wifi"></i>
+              <div>
+                <strong>Amenities:</strong> Fiber internet, AC, Security, Gym access
+              </div>
+            </div>
+          </div>
+          
+          <h4>Location</h4>
+          <p>Located in prestigious Nyarutarama, this apartment is close to international schools, shopping centers, and diplomatic missions. Easy access to main roads leading to the city center.</p>
+          
+          <div class="apartment-price" style="font-size: 1.8rem; margin: 20px 0;">
+            $1,200 <span style="font-size: 1rem;">/month</span>
+          </div>
+        </div>
+        
+        <div class="modal-form">
+          <h4>Interested in this property?</h4>
+          <form id="inquiryForm1" action="property_inquiry.php" method="POST">
+            <input type="hidden" name="property_type" value="apartment">
+            <input type="hidden" name="property_id" value="1">
+            <input type="hidden" name="property_name" value="Nyarutarama Luxury Residence">
+            <input type="hidden" name="inquiry_type" value="apartment">
+                          <div class="form-group">
+                <label for="name1">Full Name</label>
+                <input type="text" id="name1" name="name" class="form-control" required>
+              </div>
+                          <div class="form-group">
+                <label for="email1">Email Address</label>
+                <input type="email" id="email1" name="email" class="form-control" required>
+              </div>
+                          <div class="form-group">
+                <label for="phone1">Phone Number</label>
+                <input type="tel" id="phone1" name="phone" class="form-control" required>
+              </div>
+                          <div class="form-group">
+                <label for="message1">Your Message</label>
+                <textarea id="message1" name="message" class="form-control" rows="4">I'm interested in the Nyarutarama Luxury Residence and would like to schedule a viewing.</textarea>
+              </div>
+            <button type="submit" class="submit-btn">Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Apartment Modal 2 -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Kiyovu Modern Flat</h3>
+        <p>Kiyovu, Kigali</p>
+        <span class="modal-close" onclick="closeModal('modal2')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="modal-gallery">
+          <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Living Area" class="main-image">
+          <img src="new modal.png" alt="Bedroom">
+          <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Kitchen">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bathroom">
+        </div>
+        <div class="modal-details">
+          <h4>Description</h4>
+          <p>This stylish 2-bedroom flat in Kiyovu combines modern design with functionality. The apartment features large windows for natural light, a fully equipped kitchen, and a comfortable living space. Perfect for young professionals or small families.</p>
+          
+          <h4>Details</h4>
+          <div class="detail-list">
+            <div class="detail-item">
+              <i class="fas fa-home"></i>
+              <div>
+                <strong>Property Type:</strong> Apartment
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bed"></i>
+              <div>
+                <strong>Bedrooms:</strong> 2 (Both with built-in wardrobes)
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bath"></i>
+              <div>
+                <strong>Bathrooms:</strong> 1 (Modern fixtures)
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-vector-square"></i>
+              <div>
+                <strong>Size:</strong> 120 m²
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-car"></i>
+              <div>
+                <strong>Parking:</strong> 1 Reserved space
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-wifi"></i>
+              <div>
+                <strong>Amenities:</strong> High-speed internet, 24/7 security, Shared garden
+              </div>
+            </div>
+          </div>
+          
+          <h4>Location</h4>
+          <p>Located in the heart of Kiyovu, this apartment is within walking distance to restaurants, cafes, and government offices. Close to the city center with excellent transport links.</p>
+          
+          <div class="apartment-price" style="font-size: 1.8rem; margin: 20px 0;">
+            $850 <span style="font-size: 1rem;">/month</span>
+          </div>
+        </div>
+        
+        <div class="modal-form">
+          <h4>Interested in this property?</h4>
+          <form id="inquiryForm2" action="property_inquiry.php" method="POST">
+            <input type="hidden" name="property_type" value="apartment">
+            <input type="hidden" name="property_id" value="2">
+            <input type="hidden" name="property_name" value="Kiyovu Modern Flat">
+            <input type="hidden" name="inquiry_type" value="apartment">
+            <div class="form-group">
+              <label for="name2">Full Name</label>
+              <input type="text" id="name2" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email2">Email Address</label>
+              <input type="email" id="email2" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="phone2">Phone Number</label>
+              <input type="tel" id="phone2" name="phone" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message2">Your Message</label>
+              <textarea id="message2" name="message" class="form-control" rows="4">I'm interested in the Kiyovu Modern Flat and would like to schedule a viewing.</textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Apartment Modal 3 -->
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Kacyiru Executive Suite</h3>
+        <p>Kacyiru, Kigali</p>
+        <span class="modal-close" onclick="closeModal('modal3')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="modal-gallery">
+          <img src="new modal2.png" alt="Living Area" class="main-image">
+          <img src="new image house.png" alt="Bedroom">
+          <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Kitchen">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bathroom">
+        </div>
+        <div class="modal-details">
+          <h4>Description</h4>
+          <p>Spacious 4-bedroom executive suite in Kacyiru with premium finishes and ample living space. Features include a modern kitchen, large living room, and a balcony with panoramic city views. Ideal for families or professionals needing extra space.</p>
+          
+          <h4>Details</h4>
+          <div class="detail-list">
+            <div class="detail-item">
+              <i class="fas fa-home"></i>
+              <div>
+                <strong>Property Type:</strong> Apartment
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bed"></i>
+              <div>
+                <strong>Bedrooms:</strong> 4 (All with built-in wardrobes)
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bath"></i>
+              <div>
+                <strong>Bathrooms:</strong> 3 (2 ensuite)
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-vector-square"></i>
+              <div>
+                <strong>Size:</strong> 250 m²
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-car"></i>
+              <div>
+                <strong>Parking:</strong> 2 Covered spaces
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-wifi"></i>
+              <div>
+                <strong>Amenities:</strong> Fiber internet, AC, Security, Swimming pool access
+              </div>
+            </div>
+          </div>
+          
+          <h4>Location</h4>
+          <p>Prime location in Kacyiru, close to government offices, restaurants, and shopping areas. Excellent access to main roads and public transport.</p>
+          
+          <div class="apartment-price" style="font-size: 1.8rem; margin: 20px 0;">
+            $1,800 <span style="font-size: 1rem;">/month</span>
+          </div>
+        </div>
+        
+        <div class="modal-form">
+          <h4>Interested in this property?</h4>
+          <form id="inquiryForm3">
+            <div class="form-group">
+              <label for="name3">Full Name</label>
+              <input type="text" id="name3" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email3">Email Address</label>
+              <input type="email" id="email3" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="phone3">Phone Number</label>
+              <input type="tel" id="phone3" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message3">Your Message</label>
+              <textarea id="message3" class="form-control" rows="4">I'm interested in the Kacyiru Executive Suite and would like to schedule a viewing.</textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Apartment Modal 4 -->
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Gikondo Cozy Studio</h3>
+        <p>Gikondo, Kigali</p>
+        <span class="modal-close" onclick="closeModal('modal4')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="modal-gallery">
+          <img src="https://images.unsplash.com/photo-1560448205-97abe7378152?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Living Area" class="main-image">
+          <img src="new modal2.png" alt="Bedroom">
+          <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Kitchen">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bathroom">
+        </div>
+        <div class="modal-details">
+          <h4>Description</h4>
+          <p>Compact and efficient studio apartment in Gikondo, perfect for students or young professionals. Features a combined living/sleeping area, kitchenette, and modern bathroom. Great value in a convenient location.</p>
+          
+          <h4>Details</h4>
+          <div class="detail-list">
+            <div class="detail-item">
+              <i class="fas fa-home"></i>
+              <div>
+                <strong>Property Type:</strong> Studio Apartment
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bed"></i>
+              <div>
+                <strong>Bedrooms:</strong> 1 (Studio layout)
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bath"></i>
+              <div>
+                <strong>Bathrooms:</strong> 1
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-vector-square"></i>
+              <div>
+                <strong>Size:</strong> 60 m²
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-car"></i>
+              <div>
+                <strong>Parking:</strong> Street parking available
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-wifi"></i>
+              <div>
+                <strong>Amenities:</strong> Internet ready, Security, Shared laundry
+              </div>
+            </div>
+          </div>
+          
+          <h4>Location</h4>
+          <p>Located in Gikondo, this studio is close to universities, markets, and public transport routes. Easy access to the city center and other parts of Kigali.</p>
+          
+          <div class="apartment-price" style="font-size: 1.8rem; margin: 20px 0;">
+            $500 <span style="font-size: 1rem;">/month</span>
+          </div>
+        </div>
+        
+        <div class="modal-form">
+          <h4>Interested in this property?</h4>
+          <form id="inquiryForm4">
+            <div class="form-group">
+              <label for="name4">Full Name</label>
+              <input type="text" id="name4" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email4">Email Address</label>
+              <input type="email" id="email4" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="phone4">Phone Number</label>
+              <input type="tel" id="phone4" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message4">Your Message</label>
+              <textarea id="message4" class="form-control" rows="4">I'm interested in the Gikondo Cozy Studio and would like to schedule a viewing.</textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Apartment Modal 5 (New) -->
+  <div id="modal5" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Kimihurura Garden View</h3>
+        <p>Kimihurura, Kigali</p>
+        <span class="modal-close" onclick="closeModal('modal5')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="modal-gallery">
+          <img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Living Area" class="main-image">
+          <img src="new modal2.png" alt="Bedroom">
+          <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Kitchen">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bathroom">
+        </div>
+        <div class="modal-details">
+          <h4>Description</h4>
+          <p>Beautiful 3-bedroom apartment with garden views in Kimihurura. Features include a spacious living area, modern kitchen, and a balcony overlooking the communal gardens. Peaceful setting with urban convenience.</p>
+          
+          <h4>Details</h4>
+          <div class="detail-list">
+            <div class="detail-item">
+              <i class="fas fa-home"></i>
+              <div>
+                <strong>Property Type:</strong> Apartment
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bed"></i>
+              <div>
+                <strong>Bedrooms:</strong> 3 (Master with ensuite)
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bath"></i>
+              <div>
+                <strong>Bathrooms:</strong> 2
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-vector-square"></i>
+              <div>
+                <strong>Size:</strong> 200 m²
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-car"></i>
+              <div>
+                <strong>Parking:</strong> 1 Covered space
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-wifi"></i>
+              <div>
+                <strong>Amenities:</strong> High-speed internet, Security, Shared gardens, Playground
+              </div>
+            </div>
+          </div>
+          
+          <h4>Location</h4>
+          <p>Located in Kimihurura, this apartment is close to restaurants, cafes, and shopping areas while maintaining a peaceful residential atmosphere. Easy access to major roads.</p>
+          
+          <div class="apartment-price" style="font-size: 1.8rem; margin: 20px 0;">
+            $1,400 <span style="font-size: 1rem;">/month</span>
+          </div>
+        </div>
+        
+        <div class="modal-form">
+          <h4>Interested in this property?</h4>
+          <form id="inquiryForm5">
+            <div class="form-group">
+              <label for="name5">Full Name</label>
+              <input type="text" id="name5" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email5">Email Address</label>
+              <input type="email" id="email5" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="phone5">Phone Number</label>
+              <input type="tel" id="phone5" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message5">Your Message</label>
+              <textarea id="message5" class="form-control" rows="4">I'm interested in the Kimihurura Garden View apartment and would like to schedule a viewing.</textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Apartment Modal 6 (New) -->
+  <div id="modal6" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Kicukiro Sky Penthouse</h3>
+        <p>Kicukiro, Kigali</p>
+        <span class="modal-close" onclick="closeModal('modal6')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="modal-gallery">
+          <img src="https://images.unsplash.com/photo-1560448205-4d9b3e6bb6db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Living Area" class="main-image">
+          <img src="new modl 3.png" alt="Bedroom">
+          <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Kitchen">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bathroom">
+        </div>
+        <div class="modal-details">
+          <h4>Description</h4>
+          <p>Luxurious penthouse in Kicukiro with stunning city views. This 2-bedroom apartment features high-end finishes, a spacious terrace, and premium amenities. Perfect for those who appreciate style and comfort.</p>
+          
+          <h4>Details</h4>
+          <div class="detail-list">
+            <div class="detail-item">
+              <i class="fas fa-home"></i>
+              <div>
+                <strong>Property Type:</strong> Penthouse
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bed"></i>
+              <div>
+                <strong>Bedrooms:</strong> 2 (Both with ensuite)
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bath"></i>
+              <div>
+                <strong>Bathrooms:</strong> 2.5
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-vector-square"></i>
+              <div>
+                <strong>Size:</strong> 150 m²
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-car"></i>
+              <div>
+                <strong>Parking:</strong> 2 Covered spaces
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-wifi"></i>
+              <div>
+                <strong>Amenities:</strong> Fiber internet, AC, Security, Rooftop terrace, Gym access
+              </div>
+            </div>
+          </div>
+          
+          <h4>Location</h4>
+          <p>Located in Kicukiro, this penthouse offers panoramic views of the city. Close to business districts, shopping centers, and entertainment venues while providing a private retreat.</p>
+          
+          <div class="apartment-price" style="font-size: 1.8rem; margin: 20px 0;">
+            $1,100 <span style="font-size: 1rem;">/month</span>
+          </div>
+        </div>
+        
+        <div class="modal-form">
+          <h4>Interested in this property?</h4>
+          <form id="inquiryForm6">
+            <div class="form-group">
+              <label for="name6">Full Name</label>
+              <input type="text" id="name6" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email6">Email Address</label>
+              <input type="email" id="email6" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="phone6">Phone Number</label>
+              <input type="tel" id="phone6" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message6">Your Message</label>
+              <textarea id="message6" class="form-control" rows="4">I'm interested in the Kicukiro Sky Penthouse and would like to schedule a viewing.</textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Apartment Modal 7 (New) -->
+  <div id="modal7" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Remera Family Apartment</h3>
+        <p>Remera, Kigali</p>
+        <span class="modal-close" onclick="closeModal('modal7')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="modal-gallery">
+          <img src="https://images.unsplash.com/photo-1560448205-4537f057f5a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Living Area" class="main-image">
+          <img src="new modl 3.png" alt="Bedroom">
+          <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Kitchen">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bathroom">
+        </div>
+        <div class="modal-details">
+          <h4>Description</h4>
+          <p>Spacious 4-bedroom family apartment in Remera with modern amenities and comfortable living spaces. Features include a large living room, dining area, and a balcony perfect for family gatherings.</p>
+          
+          <h4>Details</h4>
+          <div class="detail-list">
+            <div class="detail-item">
+              <i class="fas fa-home"></i>
+              <div>
+                <strong>Property Type:</strong> Apartment
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bed"></i>
+              <div>
+                <strong>Bedrooms:</strong> 4 (2 with ensuite)
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bath"></i>
+              <div>
+                <strong>Bathrooms:</strong> 3
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-vector-square"></i>
+              <div>
+                <strong>Size:</strong> 220 m²
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-car"></i>
+              <div>
+                <strong>Parking:</strong> 2 Covered spaces
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-wifi"></i>
+              <div>
+                <strong>Amenities:</strong> High-speed internet, Security, Playground, Community garden
+              </div>
+            </div>
+          </div>
+          
+          <h4>Location</h4>
+          <p>Located in family-friendly Remera, this apartment is close to schools, parks, and shopping areas. Quiet neighborhood with excellent community facilities.</p>
+          
+          <div class="apartment-price" style="font-size: 1.8rem; margin: 20px 0;">
+            $1,500 <span style="font-size: 1rem;">/month</span>
+          </div>
+        </div>
+        
+        <div class="modal-form">
+          <h4>Interested in this property?</h4>
+          <form id="inquiryForm7">
+            <div class="form-group">
+              <label for="name7">Full Name</label>
+              <input type="text" id="name7" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email7">Email Address</label>
+              <input type="email" id="email7" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="phone7">Phone Number</label>
+              <input type="tel" id="phone7" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message7">Your Message</label>
+              <textarea id="message7" class="form-control" rows="4">I'm interested in the Remera Family Apartment and would like to schedule a viewing.</textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Apartment Modal 8 (New) -->
+  <div id="modal8" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Gisozi Modern Studio</h3>
+        <p>Gisozi, Kigali</p>
+        <span class="modal-close" onclick="closeModal('modal8')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="modal-gallery">
+          <img src="aprtment8.png" alt="Living Area" class="main-image">
+          <img src="new modl 3.png" alt="Bedroom">
+          <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Kitchen">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bathroom">
+        </div>
+        <div class="modal-details">
+          <h4>Description</h4>
+          <p>Modern and efficient studio apartment in Gisozi with smart design features. Includes a kitchenette, sleeping area, and compact bathroom. Perfect for students or young professionals looking for affordable housing.</p>
+          
+          <h4>Details</h4>
+          <div class="detail-list">
+            <div class="detail-item">
+              <i class="fas fa-home"></i>
+              <div>
+                <strong>Property Type:</strong> Studio Apartment
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bed"></i>
+              <div>
+                <strong>Bedrooms:</strong> 1 (Studio layout)
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bath"></i>
+              <div>
+                <strong>Bathrooms:</strong> 1
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-vector-square"></i>
+              <div>
+                <strong>Size:</strong> 70 m²
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-car"></i>
+              <div>
+                <strong>Parking:</strong> Street parking available
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-wifi"></i>
+              <div>
+                <strong>Amenities:</strong> Internet ready, Security, Shared laundry
+              </div>
+            </div>
+          </div>
+          
+          <h4>Location</h4>
+          <p>Located in Gisozi, this studio is close to public transport routes, markets, and local amenities. Affordable option in a convenient location.</p>
+          
+          <div class="apartment-price" style="font-size: 1.8rem; margin: 20px 0;">
+            $550 <span style="font-size: 1rem;">/month</span>
+          </div>
+        </div>
+        
+        <div class="modal-form">
+          <h4>Interested in this property?</h4>
+          <form id="inquiryForm8">
+            <div class="form-group">
+              <label for="name8">Full Name</label>
+              <input type="text" id="name8" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email8">Email Address</label>
+              <input type="email" id="email8" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="phone8">Phone Number</label>
+              <input type="tel" id="phone8" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message8">Your Message</label>
+              <textarea id="message8" class="form-control" rows="4">I'm interested in the Gisozi Modern Studio and would like to schedule a viewing.</textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>About Us</h3>
+          <p>Kigali's premier housing platform, connecting residents with quality homes since 2015. Committed to excellence and community values.</p>
+          <div class="social-media">
+            <a href="https://www.facebook.com/RwandaHome-1915619678653717/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/African_Prop" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/your_instagram_link" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/+250780035482" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about us.html">About Us</a></li>
+            <li><a href="apartment.html">Apartments</a></li>
+            <li><a href="For rent.html">Rentals</a></li>
+            <li><a href="For sale.html">Properties for Sale</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Contact Us</h3>
+          <div class="footer-contact">
+            <p><i class="fas fa-map-marker-alt"></i> KN 4 Ave, Kigali, Rwanda</p>
+            <p><i class="fas fa-phone-alt"></i> +250 780 035 482</p>
+            <p><i class="fas fa-envelope"></i> info@kigalihousing.rw</p>
+            <p><i class="fas fa-clock"></i> Mon-Fri: 8AM-6PM</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 Kigali Housing Platform. All rights reserved. Proudly Rwandan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // Mobile Menu Toggle
+    $(document).ready(function() {
+      $('.mobile-menu-btn').click(function() {
+        $('.nav-links').toggleClass('active');
+        $(this).find('i').toggleClass('fa-times');
+      });
+      
+      // Dropdown Menu
+      $('.dropdown-btn').click(function(e) {
+        e.preventDefault();
+        $(this).siblings('.dropdown-menu').toggleClass('active');
+        $(this).find('i').toggleClass('fa-chevron-up');
+      });
+      
+      // Close dropdown when clicking outside
+      $(document).click(function(e) {
+        if (!$(e.target).closest('.dropdown').length) {
+          $('.dropdown-menu').removeClass('active');
+          $('.dropdown-btn i').removeClass('fa-chevron-up');
+        }
+      });
+      
+      // Sticky Header
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > 100) {
+          $('#header').addClass('scrolled');
+        } else {
+          $('#header').removeClass('scrolled');
+        }
+      });
+      
+      // Back to Top Button
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > 300) {
+          $('.back-to-top').addClass('active');
+        } else {
+          $('.back-to-top').removeClass('active');
+        }
+      });
+      
+      $('.back-to-top').click(function() {
+        $('html, body').animate({scrollTop: 0}, 'smooth');
+        return false;
+      });
+      
+      // Modal Functions
+      window.openModal = function(modalId) {
+        document.getElementById(modalId).style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      }
+      
+      window.closeModal = function(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+      
+      // Close modal when clicking outside
+      window.onclick = function(event) {
+        if (event.target.className === 'modal') {
+          event.target.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      }
+      
+      // Form submission
+      $('form[id^="inquiryForm"]').submit(function(e) {
+        e.preventDefault();
+        // Here you would typically have AJAX form submission
+        // For demo purposes, we'll just show an alert
+        alert('Thank you for your inquiry! We will contact you shortly to arrange a viewing.');
+        closeModal($(this).closest('.modal').attr('id'));
+        this.reset();
+      });
+      
+      // Smooth scrolling for anchor links
+      $('a[href*="#"]').on('click', function(e) {
+        e.preventDefault();
+        
+        $('html, body').animate(
+          {
+            scrollTop: $($(this).attr('href')).offset().top - 80,
+          },
+          500,
+          'linear'
+        );
+      });
+    });
+  </script>
+</body>
+</html>

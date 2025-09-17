@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Houses for Sale in Kigali | Kigali Housing</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2D5D7C;
+      --secondary: #F9A825;
+      --dark: #1A1A2E;
+      --light: #F8F9FA;
+      --gray: #6C757D;
+      --transition: all 0.3s ease;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: white;
+      box-shadow: var(--shadow);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 30px;
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      width: 200px;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    /* Houses for Sale Section */
+    .houses-section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--secondary);
+    }
+
+    .houses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .house-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .house-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .house-img {
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .house-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .house-card:hover .house-img img {
+      transform: scale(1.05);
+    }
+
+    .house-content {
+      padding: 20px;
+    }
+
+    .house-content h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .house-location {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      color: var(--gray);
+    }
+
+    .house-location i {
+      margin-right: 8px;
+      color: var(--secondary);
+    }
+
+    .house-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .feature i {
+      margin-right: 5px;
+      color: var(--secondary);
+    }
+
+    .house-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 15px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--secondary);
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: #e69500;
+      transform: translateY(-3px);
+    }
+
+    /* House Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 40px 20px;
+    }
+
+    .modal-content {
+      background: white;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-header {
+      padding: 20px;
+      background: var(--primary);
+      color: white;
+      position: relative;
+    }
+
+    .modal-header h3 {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      color: var(--secondary);
+      transform: rotate(90deg);
+    }
+
+    .modal-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      padding: 30px;
+    }
+
+    .modal-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .modal-gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .modal-gallery img:hover {
+      transform: scale(1.02);
+    }
+
+    .main-image {
+      grid-column: span 2;
+      height: 300px;
+    }
+
+    .modal-details h4 {
+      color: var(--primary);
+      margin: 20px 0 10px;
+      font-size: 1.3rem;
+      position: relative;
+    }
+
+    .modal-details h4::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--secondary);
+    }
+
+    .detail-list {
+      margin-bottom: 20px;
+    }
+
+    .detail-item {
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    .detail-item i {
+      color: var(--secondary);
+      margin-right: 10px;
+      margin-top: 3px;
+    }
+
+    .owner-info {
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .deal-form {
+      background: #f5f5f5;
+      padding: 30px;
+      border-radius: 8px;
+    }
+
+    .deal-form h4 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(45, 93, 124, 0.1);
+    }
+
+    textarea.form-control {
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      background: var(--secondary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .submit-btn:hover {
+      background: #e69500;
+      transform: translateY(-3px);
+    }
+
+    .success-message {
+      display: none;
+      background: #4CAF50;
+      color: white;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 50px 0 20px;
+      text-align: center;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .footer-col h3 {
+      color: var(--secondary);
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .modal-body {
+        grid-template-columns: 1fr;
+      }
+      
+      .modal-gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .main-image {
+        grid-column: span 3;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+      }
+      
+      .nav-links {
+        margin-top: 20px;
+      }
+      
+      .nav-links li {
+        margin-left: 15px;
+      }
+      
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      
+      .houses-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .modal-gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .main-image {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .nav-links li {
+        margin: 10px 0;
+      }
+      
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      
+      .modal-gallery {
+        grid-template-columns: 1fr;
+      }
+      
+      .main-image {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <img src="logoo.PNG" alt="Kigali Housing">
+      </div>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about us.html">About Us</a></li>
+          <li class="dropdown">
+            <a href="properties.html">Properties</a>
+            <ul class="dropdown-menu">
+              <li><a href="apartment.html">Apartments</a></li>
+              <li><a href="For rent.html">For rent</a></li>
+              <li><a href="For sale.html" class="active">For Sale</a></li>
+              <li><a href="Short-stay.html">Short Stay</a></li>
+            </ul>
+          </li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>Premium Houses for Sale in Kigali</h1>
+      <p>Find your dream home in Rwanda's vibrant capital city</p>
+    </div>
+  </section>
+
+  <!-- Houses for Sale Section -->
+  <section class="houses-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Featured Houses</h2>
+        <p>Explore our selection of high-quality homes across Kigali's best neighborhoods</p>
+      </div>
+      
+      <div class="houses-grid">
+        <!-- House 1 -->
+        <div class="house-card">
+          <div class="house-img">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Modern House in Nyarutarama">
+          </div>
+          <div class="house-content">
+            <h3>Nyarutarama Luxury Villa</h3>
+            <div class="house-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Nyarutarama, Kigali</span>
+            </div>
+            <div class="house-features">
+              <div class="feature">
+                <i class="fas fa-bed"></i>
+                <span>5 Bedrooms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-bath"></i>
+                <span>4 Bathrooms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-vector-square"></i>
+                <span>350 m²</span>
+              </div>
+            </div>
+            <div class="house-price">
+              RWF 450,000,000
+            </div>
+            <button class="btn" onclick="openModal('modal1')">View Details</button>
+          </div>
+        </div>
+        
+        <!-- House 2 -->
+        <div class="house-card">
+          <div class="house-img">
+            <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="Contemporary House in Kiyovu">
+          </div>
+          <div class="house-content">
+            <h3>Kiyovu Contemporary Home</h3>
+            <div class="house-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Kiyovu, Kigali</span>
+            </div>
+            <div class="house-features">
+              <div class="feature">
+                <i class="fas fa-bed"></i>
+                <span>4 Bedrooms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-bath"></i>
+                <span>3 Bathrooms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-vector-square"></i>
+                <span>280 m²</span>
+              </div>
+            </div>
+            <div class="house-price">
+              RWF 380,000,000
+            </div>
+            <button class="btn" onclick="openModal('modal2')">View Details</button>
+          </div>
+        </div>
+        
+        <!-- House 3 -->
+        <div class="house-card">
+          <div class="house-img">
+            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Family House in Kacyiru">
+          </div>
+          <div class="house-content">
+            <h3>Kacyiru Family Residence</h3>
+            <div class="house-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Kacyiru, Kigali</span>
+            </div>
+            <div class="house-features">
+              <div class="feature">
+                <i class="fas fa-bed"></i>
+                <span>6 Bedrooms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-bath"></i>
+                <span>4 Bathrooms</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-vector-square"></i>
+                <span>420 m²</span>
+              </div>
+            </div>
+            <div class="house-price">
+              RWF 550,000,000
+            </div>
+            <button class="btn" onclick="openModal('modal3')">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- House Modal 1 -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Nyarutarama Luxury Villa</h3>
+        <p>Nyarutarama, Kigali</p>
+        <span class="modal-close" onclick="closeModal('modal1')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="modal-gallery">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Front View" class="main-image">
+          <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Living Room">
+          <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Kitchen">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Master Bedroom">
+        </div>
+        <div class="modal-details">
+          <h4>Description</h4>
+          <p>This stunning luxury villa in Nyarutarama offers premium living with high-end finishes, spacious rooms, and beautiful garden views. The residence features an open-plan living area, modern kitchen, swimming pool, and a large terrace perfect for entertaining.</p>
+          
+          <h4>Property Details</h4>
+          <div class="detail-list">
+            <div class="detail-item">
+              <i class="fas fa-home"></i>
+              <div>
+                <strong>Property Type:</strong> Villa
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bed"></i>
+              <div>
+                <strong>Bedrooms:</strong> 5 (All ensuite)
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bath"></i>
+              <div>
+                <strong>Bathrooms:</strong> 5 + 2 guest toilets
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-vector-square"></i>
+              <div>
+                <strong>Size:</strong> 350 m² (Land: 800 m²)
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-car"></i>
+              <div>
+                <strong>Parking:</strong> 3 Covered spaces
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-wifi"></i>
+              <div>
+                <strong>Amenities:</strong> Swimming pool, Garden, Security system, AC, Solar panels
+              </div>
+            </div>
+          </div>
+          
+          <h4>Owner Information</h4>
+          <div class="owner-info">
+            <div class="detail-item">
+              <i class="fas fa-user"></i>
+              <div>
+                <strong>Name:</strong> Mr. Jean Claude Niyomugabo
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <strong>Phone:</strong> +250 788 123 456
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <strong>Email:</strong> jcniyomugabo@example.com
+              </div>
+            </div>
+          </div>
+          
+          <div class="house-price" style="font-size: 1.8rem; margin: 20px 0;">
+            Price: RWF 450,000,000
+          </div>
+        </div>
+        
+        <div class="deal-form">
+          <h4>Make an Offer</h4>
+          <form id="dealForm1">
+            <div class="form-group">
+              <label for="name1">Full Name</label>
+              <input type="text" id="name1" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email1">Email Address</label>
+              <input type="email" id="email1" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="phone1">Phone Number</label>
+              <input type="tel" id="phone1" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="offer1">Your Offer (RWF)</label>
+              <input type="number" id="offer1" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message1">Additional Message</label>
+              <textarea id="message1" class="form-control" rows="4">I'm interested in purchasing this property and would like to discuss the details.</textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit Offer</button>
+          </form>
+          <div id="success1" class="success-message">
+            Thank you! Your offer has been submitted successfully. The owner will contact you shortly.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- House Modal 2 -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Kiyovu Contemporary Home</h3>
+        <p>Kiyovu, Kigali</p>
+        <span class="modal-close" onclick="closeModal('modal2')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="modal-gallery">
+          <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="Front View" class="main-image">
+          <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Living Area">
+          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Dining Area">
+          <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bedroom">
+        </div>
+        <div class="modal-details">
+          <h4>Description</h4>
+          <p>This contemporary home in Kiyovu combines modern design with functionality. The property features large windows for natural light, a fully equipped kitchen, and comfortable living spaces. Perfect for families who appreciate style and comfort.</p>
+          
+          <h4>Property Details</h4>
+          <div class="detail-list">
+            <div class="detail-item">
+              <i class="fas fa-home"></i>
+              <div>
+                <strong>Property Type:</strong> Detached House
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bed"></i>
+              <div>
+                <strong>Bedrooms:</strong> 4 (Master with ensuite)
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bath"></i>
+              <div>
+                <strong>Bathrooms:</strong> 3.5
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-vector-square"></i>
+              <div>
+                <strong>Size:</strong> 280 m² (Land: 500 m²)
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-car"></i>
+              <div>
+                <strong>Parking:</strong> 2 Covered spaces
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-wifi"></i>
+              <div>
+                <strong>Amenities:</strong> Garden, Security system, AC, Solar water heating
+              </div>
+            </div>
+          </div>
+          
+          <h4>Owner Information</h4>
+          <div class="owner-info">
+            <div class="detail-item">
+              <i class="fas fa-user"></i>
+              <div>
+                <strong>Name:</strong> Mrs. Amina Uwase
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <strong>Phone:</strong> +250 788 234 567
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <strong>Email:</strong> auwase@example.com
+              </div>
+            </div>
+          </div>
+          
+          <div class="house-price" style="font-size: 1.8rem; margin: 20px 0;">
+            Price: RWF 380,000,000
+          </div>
+        </div>
+        
+        <div class="deal-form">
+          <h4>Make an Offer</h4>
+          <form id="dealForm2">
+            <div class="form-group">
+              <label for="name2">Full Name</label>
+              <input type="text" id="name2" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email2">Email Address</label>
+              <input type="email" id="email2" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="phone2">Phone Number</label>
+              <input type="tel" id="phone2" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="offer2">Your Offer (RWF)</label>
+              <input type="number" id="offer2" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message2">Additional Message</label>
+              <textarea id="message2" class="form-control" rows="4">I'm interested in purchasing this property and would like to discuss the details.</textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit Offer</button>
+          </form>
+          <div id="success2" class="success-message">
+            Thank you! Your offer has been submitted successfully. The owner will contact you shortly.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- House Modal 3 -->
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Kacyiru Family Residence</h3>
+        <p>Kacyiru, Kigali</p>
+        <span class="modal-close" onclick="closeModal('modal3')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="modal-gallery">
+          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Front View" class="main-image">
+          <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Living Room">
+          <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Kitchen">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Master Bedroom">
+        </div>
+        <div class="modal-details">
+          <h4>Description</h4>
+          <p>Spacious family residence in Kacyiru with modern amenities and comfortable living spaces. Features include a large living room, dining area, home office, and a beautiful garden perfect for family gatherings.</p>
+          
+          <h4>Property Details</h4>
+          <div class="detail-list">
+            <div class="detail-item">
+              <i class="fas fa-home"></i>
+              <div>
+                <strong>Property Type:</strong> Family Home
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bed"></i>
+              <div>
+                <strong>Bedrooms:</strong> 6 (4 ensuite)
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bath"></i>
+              <div>
+                <strong>Bathrooms:</strong> 4 + 2 guest toilets
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-vector-square"></i>
+              <div>
+                <strong>Size:</strong> 420 m² (Land: 1000 m²)
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-car"></i>
+              <div>
+                <strong>Parking:</strong> 4 Covered spaces
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-wifi"></i>
+              <div>
+                <strong>Amenities:</strong> Garden, Security system, AC, Solar panels, Backup generator
+              </div>
+            </div>
+          </div>
+          
+          <h4>Owner Information</h4>
+          <div class="owner-info">
+            <div class="detail-item">
+              <i class="fas fa-user"></i>
+              <div>
+                <strong>Name:</strong> Mr. & Mrs. Nkusi
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <strong>Phone:</strong> +250 788 345 678
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <strong>Email:</strong> nkusi.family@example.com
+              </div>
+            </div>
+          </div>
+          
+          <div class="house-price" style="font-size: 1.8rem; margin: 20px 0;">
+            Price: RWF 550,000,000
+          </div>
+        </div>
+        
+        <div class="deal-form">
+          <h4>Make an Offer</h4>
+          <form id="dealForm3">
+            <div class="form-group">
+              <label for="name3">Full Name</label>
+              <input type="text" id="name3" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email3">Email Address</label>
+              <input type="email" id="email3" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="phone3">Phone Number</label>
+              <input type="tel" id="phone3" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="offer3">Your Offer (RWF)</label>
+              <input type="number" id="offer3" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message3">Additional Message</label>
+              <textarea id="message3" class="form-control" rows="4">I'm interested in purchasing this property and would like to discuss the details.</textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit Offer</button>
+          </form>
+          <div id="success3" class="success-message">
+            Thank you! Your offer has been submitted successfully. The owner will contact you shortly.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>Kigali Housing</h3>
+          <p>Your trusted partner for premium real estate in Rwanda's capital city.</p>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="For sale.html">Houses for Sale</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Contact Info</h3>
+          <p><i class="fas fa-map-marker-alt"></i> KN 4 Ave, Kigali, Rwanda</p>
+          <p><i class="fas fa-phone"></i> +250 780 035 482</p>
+          <p><i class="fas fa-envelope"></i> sales@kigalihousing.rw</p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 Kigali Housing. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Modal Functions
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      if (event.target.className === 'modal') {
+        event.target.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    // Form submission
+    document.addEventListener('DOMContentLoaded', function() {
+      const forms = ['dealForm1', 'dealForm2', 'dealForm3'];
+      
+      forms.forEach(formId => {
+        const form = document.getElementById(formId);
+        if (form) {
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get the corresponding success message
+            const successId = formId.replace('dealForm', 'success');
+            const successMessage = document.getElementById(successId);
+            
+            // Show success message
+            if (successMessage) {
+              successMessage.style.display = 'block';
+            }
+            
+            // Reset form
+            this.reset();
+            
+            // Scroll to success message
+            if (successMessage) {
+              successMessage.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+              if (successMessage) {
+                successMessage.style.display = 'none';
+              }
+            }, 5000);
+          });
+        }
+      });
+      
+      // Dropdown menu functionality
+      const dropdowns = document.querySelectorAll('.dropdown');
+      
+      dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('mouseenter', function() {
+          this.querySelector('.dropdown-menu').style.display = 'block';
+        });
+        
+        dropdown.addEventListener('mouseleave', function() {
+          this.querySelector('.dropdown-menu').style.display = 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
